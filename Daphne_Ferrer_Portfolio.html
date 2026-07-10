@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daphne Ferrer — HR & Organizational Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EC;
+    --cream-2:#F3ECDC;
+    --plum:#2B1730;
+    --plum-2:#3D2245;
+    --ink:#2A2030;
+    --coral:#FF6B54;
+    --coral-deep:#E5502F;
+    --sun:#FFC845;
+    --teal:#10897F;
+    --teal-deep:#0B655D;
+    --line: rgba(42,32,48,0.12);
+    --shadow: 0 20px 40px -20px rgba(43,23,48,0.25);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,246,236,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.15rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-mark .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--coral);
+    display:inline-block;
+  }
+  .nav-links{ display:flex; gap:28px; }
+  .nav-links a{
+    font-size:0.92rem; font-weight:600; color:var(--ink); opacity:0.7;
+    transition:opacity .2s ease, color .2s ease;
+    padding:4px 0; position:relative;
+  }
+  .nav-links a:hover{ opacity:1; color:var(--coral-deep); }
+  .nav-links a:focus-visible, a:focus-visible { outline:2px solid var(--teal); outline-offset:3px; border-radius:2px;}
+
+  @media (max-width:720px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background: radial-gradient(120% 140% at 15% 0%, var(--plum-2) 0%, var(--plum) 55%, #200F26 100%);
+    color:var(--cream);
+    padding:96px 32px 84px;
+    overflow:hidden;
+  }
+  .hero canvas{
+    position:absolute; inset:0; width:100%; height:100%;
+    opacity:0.65;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:1120px; margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--sun);
+    background:rgba(255,200,69,0.1);
+    border:1px solid rgba(255,200,69,0.35);
+    padding:7px 14px; border-radius:100px;
+    margin-bottom:28px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:1.04;
+    max-width:820px;
+    font-weight:600;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--coral); font-weight:500;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.15rem; line-height:1.65;
+    max-width:560px;
+    color:rgba(251,246,236,0.82);
+  }
+  .credentials{
+    margin-top:24px;
+    display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .credentials span{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    border:1px solid rgba(251,246,236,0.28);
+    padding:6px 12px; border-radius:100px;
+    color:rgba(251,246,236,0.9);
+  }
+  .hero-cta{
+    margin-top:38px; display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px; border-radius:100px;
+    font-weight:700; font-size:0.95rem;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--coral); color:#fff;
+    box-shadow:0 10px 24px -8px rgba(255,107,84,0.55);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); background:var(--coral-deep); }
+  .btn-ghost{
+    background:transparent; color:var(--cream);
+    border-color:rgba(251,246,236,0.35);
+  }
+  .btn-ghost:hover{ transform:translateY(-2px); border-color:var(--sun); color:var(--sun); }
+  .btn:focus-visible{ outline:2px solid var(--sun); outline-offset:3px; }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats{
+    border-bottom:1px solid var(--line);
+    background:var(--cream-2);
+  }
+  .stats-grid{
+    max-width:1120px; margin:0 auto; padding:36px 32px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .stat{ text-align:left; }
+  .stat .num{
+    font-family:'JetBrains Mono', monospace; font-weight:700;
+    font-size:clamp(1.5rem, 3vw, 2.1rem);
+  }
+  .stat:nth-child(1) .num{ color:var(--coral-deep); }
+  .stat:nth-child(2) .num{ color:var(--teal-deep); }
+  .stat:nth-child(3) .num{ color:var(--coral-deep); }
+  .stat:nth-child(4) .num{ color:var(--teal-deep); }
+  .stat .label{
+    font-size:0.82rem; color:var(--ink); opacity:0.65; margin-top:4px;
+    max-width:180px;
+  }
+  @media (max-width:720px){
+    .stats-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section.block{ padding:88px 32px; }
+  .kicker{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.14em; color:var(--teal-deep);
+    margin-bottom:14px; display:block;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 4vw, 2.6rem);
+    max-width:640px;
+  }
+  .reveal{
+    opacity:0; transform:translateY(22px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    margin-top:40px;
+    display:grid; grid-template-columns:1.1fr 1fr; gap:56px;
+  }
+  .about-grid p{
+    font-size:1.05rem; line-height:1.75; color:var(--ink); opacity:0.88;
+  }
+  .chip-cloud{ display:flex; flex-wrap:wrap; gap:10px; align-content:flex-start; }
+  .chip{
+    font-size:0.85rem; font-weight:600;
+    padding:9px 15px; border-radius:100px;
+    border:1px solid var(--line);
+    background:#fff;
+  }
+  .chip:nth-child(3n+1){ border-color:rgba(255,107,84,0.4); color:var(--coral-deep); }
+  .chip:nth-child(3n+2){ border-color:rgba(16,137,127,0.4); color:var(--teal-deep); }
+  .chip:nth-child(3n+3){ border-color:rgba(255,200,69,0.55); color:#8A5A00; }
+  @media (max-width:820px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{ margin-top:56px; position:relative; }
+  .timeline::before{
+    content:""; position:absolute; left:11px; top:8px; bottom:8px; width:2px;
+    background:linear-gradient(to bottom, var(--coral), var(--teal));
+    opacity:0.35;
+  }
+  .tl-item{
+    position:relative; padding-left:44px; margin-bottom:44px;
+  }
+  .tl-item:last-child{ margin-bottom:0; }
+  .tl-dot{
+    position:absolute; left:0; top:6px;
+    width:24px; height:24px; border-radius:50%;
+    background:var(--cream); border:2px solid var(--coral);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .tl-dot::after{
+    content:""; width:8px; height:8px; border-radius:50%; background:var(--coral);
+  }
+  .tl-item.teal .tl-dot{ border-color:var(--teal); }
+  .tl-item.teal .tl-dot::after{ background:var(--teal); }
+  .tl-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:26px 28px; box-shadow:var(--shadow);
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .tl-card:hover{ transform:translateY(-4px); border-color:var(--coral); }
+  .tl-top{
+    display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px;
+    margin-bottom:6px;
+  }
+  .tl-role{ font-family:'Fraunces', serif; font-weight:600; font-size:1.2rem; }
+  .tl-date{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    color:var(--teal-deep); opacity:0.85; white-space:nowrap;
+  }
+  .tl-org{ font-weight:700; color:var(--coral-deep); font-size:0.92rem; margin-bottom:14px; }
+  .tl-card ul{ margin:0; padding-left:20px; }
+  .tl-card li{ font-size:0.95rem; line-height:1.65; opacity:0.85; margin-bottom:8px; }
+  .tl-card li:last-child{ margin-bottom:0; }
+
+  /* ---------- EDU / CERT GRID ---------- */
+  .card-grid{
+    margin-top:48px; display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
+  }
+  @media (max-width:720px){ .card-grid{ grid-template-columns:1fr; } }
+  .info-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px 26px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .info-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .info-card .tag{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--teal-deep); margin-bottom:10px; display:block;
+  }
+  .info-card h4{ font-size:1.05rem; font-weight:600; margin-bottom:4px; }
+  .info-card .org{ font-size:0.88rem; opacity:0.65; margin-bottom:6px; }
+  .info-card .yr{ font-size:0.82rem; opacity:0.5; font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-band{ background:var(--plum); color:var(--cream); }
+  .skills-band .kicker{ color:var(--sun); }
+  .skill-grid{
+    margin-top:36px; display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .skill-pill{
+    padding:10px 18px; border-radius:100px; font-size:0.88rem; font-weight:600;
+    border:1px solid rgba(251,246,236,0.25);
+    background:rgba(251,246,236,0.06);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ text-align:center; }
+  .contact h2{ font-size:clamp(2rem, 5vw, 3rem); max-width:700px; margin:0 auto; }
+  .contact p{
+    max-width:520px; margin:18px auto 0; font-size:1.05rem; opacity:0.75; line-height:1.6;
+  }
+  .contact-cta{ margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-dark{
+    background:var(--plum); color:var(--cream);
+    box-shadow:0 10px 24px -8px rgba(43,23,48,0.35);
+  }
+  .btn-dark:hover{ transform:translateY(-2px); background:var(--plum-2); }
+  .btn-outline{
+    background:transparent; color:var(--plum); border-color:var(--plum);
+  }
+  .btn-outline:hover{ transform:translateY(-2px); background:var(--plum); color:var(--cream); }
+
+  footer{
+    padding:32px; text-align:center; font-size:0.82rem; opacity:0.55;
+    border-top:1px solid var(--line);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-mark"><span class="dot"></span>Daphne Ferrer</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <canvas id="network"></canvas>
+  <div class="hero-inner">
+    <span class="eyebrow">● Available for HR & People Ops roles</span>
+    <h1>Hi, I'm Daphne — I build the <em>people side</em> of organizations.</h1>
+    <p class="lede">HR &amp; Organizational Development professional who's spent 7+ years turning
+      recruitment pipelines, payroll systems, and partner networks into things that just work —
+      and genuinely enjoying every conversation along the way.</p>
+    <div class="credentials">
+      <span>Registered Psychometrician (RPm)</span>
+      <span>Certified HR Associate (CHRA)</span>
+      <span>Career Service Professional Eligible (CSPE)</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:daphneferrer.work@gmail.com">Say hello 👋</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/daphneferrer" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="num">7+</div>
+      <div class="label">years across nonprofit, healthcare, government & private sector HR</div>
+    </div>
+    <div class="stat">
+      <div class="num">3,000+</div>
+      <div class="label">applicants interviewed, ~900 interviews conducted</div>
+    </div>
+    <div class="stat">
+      <div class="num">42</div>
+      <div class="label">university partnerships built & maintained (MOAs)</div>
+    </div>
+    <div class="stat">
+      <div class="num">$3.5M</div>
+      <div class="label">AR portfolio managed, reduced outstanding by ~70%</div>
+    </div>
+  </div>
+</div>
+
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">About</span>
+      <h2>People-first, process-obsessed, and always up for a good conversation.</h2>
+    </div>
+    <div class="about-grid reveal">
+      <p>
+        I'm an HR and Operations professional who genuinely loves this work — the interviews,
+        the onboarding days, the messy spreadsheet that becomes a clean SOP. Across nonprofit,
+        healthcare, government, and private-sector organizations, I've managed end-to-end HR
+        functions, recruitment, employee relations, organizational development, payroll, and
+        billing. I've built talent pipelines from scratch, standardized operations that used to
+        live in someone's head, and improved accuracy across payroll, billing, and recruitment
+        at scale. My psychology background (RPm) means I read people well; my operations streak
+        means I turn that into systems everyone can rely on.
+      </p>
+      <div class="chip-cloud">
+        <span class="chip">Full-Cycle Recruitment</span>
+        <span class="chip">Employee Relations</span>
+        <span class="chip">Organizational Development</span>
+        <span class="chip">Performance Management</span>
+        <span class="chip">Learning & Development</span>
+        <span class="chip">HR Policy & Compliance</span>
+        <span class="chip">Payroll Administration</span>
+        <span class="chip">Billing & AR</span>
+        <span class="chip">Process Improvement</span>
+        <span class="chip">Partnership Management</span>
+        <span class="chip">HRIS & Databases</span>
+        <span class="chip">Training Facilitation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience" style="background:var(--cream-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Experience</span>
+      <h2>The path so far.</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">HR &amp; Organizational Development Specialist</div>
+            <div class="tl-date">AUG 2022 — PRESENT</div>
+          </div>
+          <div class="tl-org">Knowledge Channel Foundation, Inc. · Officer-in-Charge, Volunteer & Internship Program</div>
+          <ul>
+            <li>Manage end-to-end operations of a university volunteer/internship program — deployment, onboarding, and evaluation of 50–60 interns per semester and 200+ volunteers.</li>
+            <li>Built and sustained partnerships with 42 universities, managing 42 MOAs (30 renewals) and expanding the network by 10 new institutions.</li>
+            <li>Delivered 20+ institutional presentations and conducted ~900 interviews across 3,000+ applicants, supporting ~500 interns/volunteers onboarded and ~20 regular hires.</li>
+            <li>Designed and facilitated 10–15 L&D sessions a year at 90–100% participation; built onboarding materials and evaluation tools now used as the program standard.</li>
+            <li>Built the SOPs, workflows, dashboards, and trackers that standardized the program and improved cross-team efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item teal reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">HR, Payroll &amp; Billing Lead</div>
+            <div class="tl-date">DEC 2025 — JUN 2026</div>
+          </div>
+          <div class="tl-org">Infinite Love Homecare (Remote)</div>
+          <ul>
+            <li>Led full-cycle recruitment and onboarding for ~30 caregivers in six months; rolled out DocuSign and virtual group onboarding, cutting turnaround time and going fully paperless.</li>
+            <li>Managed bi-weekly payroll for 100–150 caregivers (USD 150K–170K per cycle) at 95–100% accuracy, resolving 15–20 recurring errors including holiday-pay miscalculations.</li>
+            <li>Oversaw billing for 60–100 active clients — ~USD 500K in monthly invoices and a $3.5M AR portfolio — reducing outstanding AR by ~70% to an ~89% collection rate.</li>
+            <li>Authored SOPs across recruitment, onboarding, payroll, and billing, and produced audit-ready documentation that strengthened internal controls.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">HR Coordinator &amp; Generalist</div>
+            <div class="tl-date">JUL 2019 — JUN 2021</div>
+          </div>
+          <div class="tl-org">Suburbia Automotive Ventures Inc.</div>
+          <ul>
+            <li>Led full-cycle recruitment from workforce planning through onboarding; designed job descriptions, competency profiles, and pre-employment psychological assessments.</li>
+            <li>Managed employee records, disciplinary documentation, HMO administration, and statutory compliance; coordinated employee engagement programs and events.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item teal reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">Jail Officer 1 Trainee</div>
+            <div class="tl-date">JUL 2021 — JUN 2022</div>
+          </div>
+          <div class="tl-org">Bureau of Jail Management and Penology (BJMP)</div>
+          <ul>
+            <li>Supported HR operations, personnel records management, and psychometric assessments used in recruitment and evaluation during intensive government training.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">Administrative Aide III</div>
+            <div class="tl-date">JAN 2019</div>
+          </div>
+          <div class="tl-org">City Government of Tayabas · Business Permit &amp; Licensing Division</div>
+          <ul>
+            <li>Processed business permit applications and renewals, maintaining licensing records and compliance documentation.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="block" id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Education & Licenses</span>
+      <h2>Still growing — a psychologist at heart.</h2>
+    </div>
+    <div class="card-grid reveal">
+      <div class="info-card">
+        <span class="tag">Education</span>
+        <h4>M.A. in Psychology, Major in Clinical Psychology</h4>
+        <div class="org">Southern Luzon State University</div>
+        <div class="yr">2023 — Present</div>
+      </div>
+      <div class="info-card">
+        <span class="tag">Education</span>
+        <h4>M.S. in Psychology</h4>
+        <div class="org">Laguna College of Business and Arts</div>
+        <div class="yr">2021 — 2022</div>
+      </div>
+      <div class="info-card">
+        <span class="tag">Education</span>
+        <h4>B.A. in Psychology</h4>
+        <div class="org">Southern Luzon State University</div>
+        <div class="yr">2014 — 2018</div>
+      </div>
+      <div class="info-card">
+        <span class="tag">License</span>
+        <h4>Certified Human Resource Associate (CHRA)</h4>
+        <div class="org">HR Educators' Association of the Philippines</div>
+        <div class="yr">2022</div>
+      </div>
+      <div class="info-card">
+        <span class="tag">License</span>
+        <h4>Registered Psychometrician (RPm)</h4>
+        <div class="org">Professional Regulation Commission</div>
+        <div class="yr">2019</div>
+      </div>
+      <div class="info-card">
+        <span class="tag">License</span>
+        <h4>Career Service Professional Eligibility (CSPE)</h4>
+        <div class="org">Civil Service Commission</div>
+        <div class="yr">2018</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block skills-band" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Tools & Technical Skills</span>
+      <h2>What I work in day-to-day.</h2>
+    </div>
+    <div class="skill-grid reveal">
+      <span class="skill-pill">Microsoft Office Suite (Advanced Excel)</span>
+      <span class="skill-pill">Google Workspace</span>
+      <span class="skill-pill">HRIS & HR Database Management</span>
+      <span class="skill-pill">Payroll Administration</span>
+      <span class="skill-pill">Billing & Accounts Receivable</span>
+      <span class="skill-pill">Process Documentation (SOPs)</span>
+      <span class="skill-pill">Canva</span>
+      <span class="skill-pill">Data Analysis & Reporting</span>
+    </div>
+  </div>
+</section>
+
+<section class="block contact" id="contact">
+  <div class="wrap reveal">
+    <span class="kicker" style="text-align:center; display:block;">Contact</span>
+    <h2>Let's talk — I promise I'm easy to reach and easier to talk to.</h2>
+    <p>Whether it's a role, a partnership, or just HR nerding out, my inbox and calendar are open.
+       Based in Tayabas City, Quezon, Philippines.</p>
+    <div class="contact-cta">
+      <a class="btn btn-dark" href="mailto:daphneferrer.work@gmail.com">daphneferrer.work@gmail.com</a>
+      <a class="btn btn-outline" href="tel:+639468297055">+63 946 829 7055</a>
+      <a class="btn btn-outline" href="https://linkedin.com/in/daphneferrer" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>Made with care by Daphne Ferrer · Tayabas City, Quezon, Philippines</footer>
+
+<script>
+  // Hero network animation — represents the connections Daphne builds:
+  // universities, volunteers, interns, and teams, all linked.
+  const canvas = document.getElementById('network');
+  const ctx = canvas.getContext('2d');
+  const hero = document.querySelector('.hero');
+  let w, h, nodes;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    w = canvas.width = hero.offsetWidth;
+    h = canvas.height = hero.offsetHeight;
+  }
+  function initNodes(){
+    const count = Math.max(24, Math.floor(w / 55));
+    nodes = Array.from({length: count}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      vx: (Math.random()-0.5) * 0.28,
+      vy: (Math.random()-0.5) * 0.28,
+      r: Math.random()*1.6 + 1.2
+    }));
+  }
+  const palette = ['#FF6B54', '#FFC845', '#10897F', '#F3ECDC'];
+
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    for(const n of nodes){
+      if(!reduceMotion){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x < 0 || n.x > w) n.vx *= -1;
+        if(n.y < 0 || n.y > h) n.vy *= -1;
+      }
+    }
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < 140){
+          ctx.strokeStyle = `rgba(255,200,69,${0.14 * (1 - dist/140)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach((n,i) => {
+      ctx.fillStyle = palette[i % palette.length];
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+  resize(); initNodes(); tick();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
